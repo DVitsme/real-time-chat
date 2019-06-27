@@ -22,3 +22,21 @@ npm run dev
 7. A user will only be able to star a message once.
 
 _Hosting this in firebase seems good_
+
+## Development setup
+
+```
+You need to make your own firebase.js file inside of the src/ folder and link it to your own firebase backend.
+```
+
+Super easy to do
+
+- go to the console
+- click for the web
+- copy the var firebaseConfig
+- inside of your own firebase.js file import firebase from 'firebase/app'; import 'firebase/firestore';
+- then paste your var
+- type: firebase.initializeApp(firebaseConfig);
+- type: out export const firestore = firebase.firestore();
+- type: export default firebase;
+- CONGRATS you are now hooked up to your cloude db go make facebook ya smart kid :)
