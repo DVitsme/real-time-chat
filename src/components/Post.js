@@ -25,7 +25,10 @@ export default function Post({
           <Comment.Actions>
             <Comment.Action>{user.displayName}</Comment.Action>
             <Comment.Action>{moment(createdAt).calendar()}</Comment.Action>
-            <Comment.Action>{stars}</Comment.Action>
+            <Comment.Action>
+              <Icon name="star outline" />
+              {stars}
+            </Comment.Action>
             <Comment.Action>
               <Icon name="angle down" />
               Replies
