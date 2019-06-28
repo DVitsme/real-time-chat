@@ -4,6 +4,9 @@ import { Container, Header } from 'semantic-ui-react';
 
 import Posts from './Posts';
 
+// Import DB
+import { firestore } from '../firebase';
+
 class Application extends Component {
   state = {
     posts: [
@@ -36,6 +39,18 @@ class Application extends Component {
         comments: 0
       }
     ]
+  };
+
+  componentDidMount = async () => {
+    const snapshot = await firestore.collection('posts').get();
+
+    snapshot.forEach(doc => {
+      const id = doc.id;
+      const data = doc.data();
+
+      console.log({ id, data });
+    });
+    console.log({ snapshot });
   };
 
   handleCreate = post => {
