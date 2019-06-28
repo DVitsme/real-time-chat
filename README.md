@@ -36,7 +36,8 @@ Super easy to do
 - copy the var firebaseConfig
 - inside of your own firebase.js file import firebase from 'firebase/app'; import 'firebase/firestore';
 - then paste your var
-- type: firebase.initializeApp(firebaseConfig);
-- type: out export const firestore = firebase.firestore();
-- type: export default firebase;
+- Copy and Paste The Code Below
+- firebase.initializeApp(firebaseConfig);
+- out export const firestore = firebase.firestore();
+- export default firebase;
 - CONGRATS you are now hooked up to your cloude db go make facebook ya smart kid :)
