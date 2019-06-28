@@ -17,7 +17,6 @@ export default class AddPost extends Component {
 
     // hard coded for now update with firebase data later on
     const post = {
-      id: Date.now().toString(),
       title,
       content,
       user: {
