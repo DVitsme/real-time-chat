@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
 import Posts from './Posts';
+import { getAllPost } from '../utilities';
 
 // Import DB
 import { firestore } from '../firebase';
@@ -44,18 +45,22 @@ class Application extends Component {
   componentDidMount = async () => {
     const snapshot = await firestore.collection('posts').get();
 
-    snapshot.forEach(doc => {
-      const id = doc.id;
-      const data = doc.data();
+    // get all the post in database
+    const posts = snapshot.docs.map(getAllPost);
 
-      console.log({ id, data });
-    });
-    console.log({ snapshot });
+    // asign those post to the state
+    this.setState({ posts });
   };
 
-  handleCreate = post => {
+  handleCreate = async post => {
     const { posts } = this.state;
-    this.setState({ posts: [post, ...posts] });
+
+    const docRef = await firestore.collection('posts').add(post);
+    const doc = await docRef.get();
+
+    const newPost = getAllPost(doc);
+
+    this.setState({ posts: [newPost, ...posts] });
   };
 
   render() {
